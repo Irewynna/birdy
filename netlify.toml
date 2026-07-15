@@ -3,11 +3,7 @@
   publish = ".next"
 
 [build.environment]
-<<<<<<< HEAD
   SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME"  
-=======
-  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET,NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME"   
->>>>>>> 14196c11d56b8e2a00ea608a7e51e28f07aa05f8
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
