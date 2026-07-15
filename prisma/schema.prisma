@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+}
+
+// One bird species can have many photos/sightings.
+model Species {
+  id             String   @id @default(cuid())
+  // Sequential catalogue number, e.g. "No. 001" — assigned on create.
+  catalogNumber  Int      @unique @default(autoincrement())
+  commonName     String
+  scientificName String?
+  createdAt      DateTime @default(now())
+  photos         Photo[]
+
+  @@index([commonName])
+}
+
+// Each row is one photo / one sighting of that species.
+model Photo {
+  id           String    @id @default(cuid())
+  speciesId    String
+  species      Species   @relation(fields: [speciesId], references: [id], onDelete: Cascade)
+
+  // Cloudinary data
+  url          String
+  publicId     String
+
+  // Sighting details
+  dateSpotted  DateTime?
+  location     String?
+  notes        String?
+
+  createdAt    DateTime  @default(now())
+
+  @@index([speciesId])
+}

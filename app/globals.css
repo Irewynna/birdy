@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #EDEAdf;
+  color: #2A2E26;
+}
+
+/* subtle paper grain over the whole page */
+.paper-texture {
+  background-image: radial-gradient(rgba(42, 46, 38, 0.06) 1px, transparent 1px);
+  background-size: 3px 3px;
+}
+
+/* perforated / index-card edge effect used on specimen cards */
+.specimen-card {
+  position: relative;
+  border: 1px solid #C7C0AE;
+  background: #F4F2E9;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.specimen-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -12px rgba(42, 46, 38, 0.35);
+}
+
+.stamp-rotate {
+  transform: rotate(-3deg);
+}
+
+/* visible keyboard focus, respecting accessibility */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #9C4A32;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
